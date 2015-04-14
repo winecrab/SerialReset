@@ -71,6 +71,10 @@ void sr_setup(unsigned long baud, const char *reset_cmd, const char *reset_suppo
     sr_reset_support_cmd = reset_support_cmd;
     sr_reset_support_response = reset_support_response;
     sr_reset_func = reset_func;
+
+    #ifdef SR_LED_ON_RESET
+    pinMode(13, OUTPUT);
+    #endif
 }
 
 void sr_setup(unsigned long baud, const char *reset_cmd, const char *reset_support_cmd, const char *reset_support_response) {
