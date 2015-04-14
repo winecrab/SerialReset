@@ -12,7 +12,7 @@
 // uncomment to get additional logging
 // #define SR_DEBUG 1
 
-// uncomment to set LED on ppin 13 to HIGH for 2 seconds on reset
+// uncomment to set LED on pin 13 to HIGH for 1 second on reset
 // #define SR_LED_ON_RESET 1
 
 const char *sr_reset_cmd;           // command to perform reset
@@ -136,7 +136,7 @@ void serial_check(int in_byte, const char *cmd, int *index, int *index2, void (*
        (*index) = (*index) + 1;
         if (cmd[*index] == 0) {
           
-            // 13 is HIGH for 2 seconds to indicate reset is done 
+            // 13 is HIGH for 1 second to indicate reset is done 
             #ifdef SR_LED_ON_RESET
             digitalWrite(13, HIGH);
             delay(1000);
