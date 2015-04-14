@@ -2,15 +2,17 @@
 
 /*
 
-  Echo sketch with serial reset using bootloader jump
+  Echo sketch with serial reset using pin wired to RESET pin
   Open serial monitor at 115200, send "AT+RESET?" to check serial reset support, "AT+RESET!" to reset the board
 
   http://playground.arduino.cc/Main/ArduinoReset
-
+  http://weblog.jos.ph/development/arduino-reset-hack/
+  
 */
 
 void setup() {
-  sr_setup(115200); // Setup SerialReset
+  // wire pin 10 and RESET pin
+  sr_setup(115200, 10); // Setup SerialReset
   
   #if defined(__AVR_ATmega32U4__)
   while (!Serial) {

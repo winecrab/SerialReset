@@ -3,6 +3,7 @@
    APPLoader project, SerialReset library
 
    http://playground.arduino.cc/Main/ArduinoReset
+   http://weblog.jos.ph/development/arduino-reset-hack/
 */
 
 #ifndef __SERIAL_RESET_H__
