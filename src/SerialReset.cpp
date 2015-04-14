@@ -13,7 +13,7 @@
 // #define SR_DEBUG 1
 
 // uncomment to set LED on ppin 13 to HIGH for 2 seconds on reset
-#define SR_LED_ON_RESET 1
+// #define SR_LED_ON_RESET 1
 
 const char *sr_reset_cmd;           // command to perform reset
 const char *sr_reset_support_cmd;   // command to check if serial reset is supported
@@ -83,11 +83,12 @@ void sr_setup(unsigned long baud) {
 
 void sr_setup(unsigned long baud, const char *reset_cmd, const char *reset_support_cmd, const char *reset_support_response, int reset_pin) {
   sr_reset_pin = reset_pin;
-  sr_setup(baud, reset_cmd, reset_support_cmd, reset_support_response, &sr_perform_reset_pin);
-  
+
   // init reset pin
-  pinMode(sr_reset_pin, OUTPUT);
   digitalWrite(sr_reset_pin, HIGH);
+  pinMode(sr_reset_pin, OUTPUT);
+
+  sr_setup(baud, reset_cmd, reset_support_cmd, reset_support_response, &sr_perform_reset_pin);
 }
 
 // setup with custom commands, "AT+RESET?" as support command and "YES" as response. used pin wired to reset 
