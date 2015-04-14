@@ -1,5 +1,11 @@
 #include <SerialReset.h>
 
+/*
+
+  http://playground.arduino.cc/Main/ArduinoReset
+  
+*/
+
 void setup() {
   sr_setup(115200); // Setup SerialReset
   

@@ -1,6 +1,8 @@
 /*
    Anton Smirnov, 2015
    APPLoader project, SerialReset library
+
+   http://playground.arduino.cc/Main/ArduinoReset
 */
 
 #ifndef __SERIAL_RESET_H__

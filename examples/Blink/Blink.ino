@@ -16,6 +16,10 @@
 
   modified 13 Apr 2015
   by Anton Smirnov
+  
+
+  http://playground.arduino.cc/Main/ArduinoReset
+  
  */
 
 const int LED = 13;
