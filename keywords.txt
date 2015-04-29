@@ -9,7 +9,7 @@
 #######################################
 # Methods and Functions (KEYWORD2)
 #######################################
-sr_setup	KEYWORD2
+Serial_begin	KEYWORD2
 Serial_available	KEYWORD2
 Serial_read	KEYWORD2	
 

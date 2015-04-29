@@ -12,7 +12,7 @@
 
 void setup() {
   // wire pin 10 and RESET pin
-  sr_setup(115200, 10); // Setup SerialReset
+  Serial_begin(115200, 10); // use Serial_begin() instead of Serial.begin()
   
   #if defined(__AVR_ATmega32U4__)
   while (!Serial) {

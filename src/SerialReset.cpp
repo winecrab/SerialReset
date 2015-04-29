@@ -64,7 +64,7 @@ void sr_perform_reset_pin() {
   digitalWrite(sr_reset_pin, LOW);
 }
 
-void sr_setup(unsigned long baud, const char *reset_cmd, const char *reset_support_cmd, const char *reset_support_response, void (*reset_func)()) {
+void Serial_begin(unsigned long baud, const char *reset_cmd, const char *reset_support_cmd, const char *reset_support_response, void (*reset_func)()) {
     Serial.begin(baud);
     
     sr_reset_cmd = reset_cmd;
@@ -77,27 +77,27 @@ void sr_setup(unsigned long baud, const char *reset_cmd, const char *reset_suppo
     #endif
 }
 
-void sr_setup(unsigned long baud, const char *reset_cmd, const char *reset_support_cmd, const char *reset_support_response) {
-    sr_setup(baud, reset_cmd, reset_support_cmd, reset_support_response, &sr_perform_reset_jump_bootloader);
+void Serial_begin(unsigned long baud, const char *reset_cmd, const char *reset_support_cmd, const char *reset_support_response) {
+    Serial_begin(baud, reset_cmd, reset_support_cmd, reset_support_response, &sr_perform_reset_jump_bootloader);
 }
 
-void sr_setup(unsigned long baud) {
-  sr_setup(baud, SR_RESET_CMD, SR_RESET_SUPPORT_CMD, SR_RESET_SUPPORT_RESPONSE);
+void Serial_begin(unsigned long baud) {
+  Serial_begin(baud, SR_RESET_CMD, SR_RESET_SUPPORT_CMD, SR_RESET_SUPPORT_RESPONSE);
 }
 
-void sr_setup(unsigned long baud, const char *reset_cmd, const char *reset_support_cmd, const char *reset_support_response, int reset_pin) {
+void Serial_begin(unsigned long baud, const char *reset_cmd, const char *reset_support_cmd, const char *reset_support_response, int reset_pin) {
   sr_reset_pin = reset_pin;
 
   // init reset pin
   digitalWrite(sr_reset_pin, HIGH);
   pinMode(sr_reset_pin, OUTPUT);
 
-  sr_setup(baud, reset_cmd, reset_support_cmd, reset_support_response, &sr_perform_reset_pin);
+  Serial_begin(baud, reset_cmd, reset_support_cmd, reset_support_response, &sr_perform_reset_pin);
 }
 
 // setup with custom commands, "AT+RESET?" as support command and "YES" as response. used pin wired to reset 
-void sr_setup(unsigned long baud, int reset_pin) {
-  sr_setup(baud, SR_RESET_CMD, SR_RESET_SUPPORT_CMD, SR_RESET_SUPPORT_RESPONSE, reset_pin);
+void Serial_begin(unsigned long baud, int reset_pin) {
+  Serial_begin(baud, SR_RESET_CMD, SR_RESET_SUPPORT_CMD, SR_RESET_SUPPORT_RESPONSE, reset_pin);
 }
 
 int Serial_available() {
