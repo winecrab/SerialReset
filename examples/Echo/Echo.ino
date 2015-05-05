@@ -10,7 +10,7 @@
 */
 
 void setup() {
-  Serial_begin(115200); // use Serial_begin() instead of Serial.begin()
+  Serial_begin(SERIAL_RESET_BAUD_RATE); // use Serial_begin() instead of Serial.begin()
   
   #if defined(__AVR_ATmega32U4__)
   while (!Serial) {

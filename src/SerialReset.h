@@ -9,6 +9,15 @@
 #ifndef __SERIAL_RESET_H__
 #define __SERIAL_RESET_H__
 
+#if defined(ARDUINO_AVR_DUEMILANOVE) || defined(ARDUINO_AVR_NANO)
+   #define SERIAL_RESET_BAUD_RATE 57600 // for Duemilanove and Nano
+#else
+	#define SERIAL_RESET_BAUD_RATE 115200
+#endif
+
+// #warning "Serial baud rate is set to " SERIAL_RESET_BAUD_RATE
+#pragma message "Serial baud rate is set to " SERIAL_RESET_BAUD_RATE
+
 // setup with "AT+RESET!" as command, "AT+RESET?" as support command and "YES" as response. bootloader jump used for reset
 void Serial_begin(unsigned long baud);
 
