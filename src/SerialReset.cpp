@@ -211,9 +211,9 @@ void serial_check(int in_byte, const char *cmd, int *index, int *index2, void (*
         }
     }
 }
- 
-void serialEvent() {
-    if (Serial.available() <= 0)
+
+void serialResetEvent() {
+  if (Serial.available() <= 0)
         return;
         
     int in_byte = Serial.read();
@@ -228,4 +228,9 @@ void serialEvent() {
     Serial.println("check reset cmd");
     #endif
     serial_check(in_byte, sr_reset_cmd, &sr_reset_index, &sr_reset_support_index, sr_reset_func);                     // check reset
+
+}
+ 
+void serialEvent() {
+  serialResetEvent();
 } 

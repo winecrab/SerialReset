@@ -36,4 +36,7 @@ int Serial_available();
 // use instead of Serial.read();
 int Serial_read();
 
+// read from Serial and handle reset commands
+void serialResetEvent();
+
 #endif

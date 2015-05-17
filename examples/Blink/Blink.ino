@@ -23,6 +23,7 @@
  */
 
 const int LED = 13;
+const int INTERVAL = 1000;
 
 // the setup function runs once when you press reset or power the board
 void setup() {
@@ -38,10 +39,22 @@ void setup() {
   pinMode(LED, OUTPUT);
 }
 
+unsigned long time;
+int level = LOW;
+
 // the loop function runs over and over again forever
 void loop() {
-  digitalWrite(LED, HIGH);   // turn the LED on (HIGH is the voltage level)
-  delay(1000);              // wait for a second
-  digitalWrite(LED, LOW);    // turn the LED off by making the voltage LOW
-  delay(1000);              // wait for a second
+  /*
+  Since serialEvent() is invoked between loop invocations:
+  1. don’t use delay() with large interval value
+  or
+  2. run serialResetEvent() within loop() to read serial data and handle reset commands
+  */
+
+  unsigned long curTime = millis();
+  if (curTime - time > INTERVAL) {
+    level = 1 - level;
+    time = curTime;
+    digitalWrite(LED, level);
+  }
 }
