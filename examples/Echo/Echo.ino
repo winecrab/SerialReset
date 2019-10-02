@@ -1,7 +1,6 @@
 #include <SerialReset.h>
 
 /*
-
   Echo sketch with serial reset using bootloader jump
   Open serial monitor at 115200, send "AT+RESET?" to check serial reset support, "AT+RESET!" to reset the board
 
